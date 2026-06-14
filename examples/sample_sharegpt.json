@@ -1,0 +1,17 @@
+[
+  {
+    "messages": [
+      {
+        "role": "user",
+        "content": "<image>Extrae la información de este ticket de compra y devuélvela como un único objeto JSON con esta estructura: comercio (nombre, cif, direccion, telefono), ticket (numero, fecha en formato DD/MM/AAAA, hora), lineas (lista de objetos con descripcion, cantidad, precio_unitario, importe), impuestos (lista de objetos con tipo, porcentaje, base, cuota), subtotal, total y forma_pago. Usa punto como separador decimal y no incluyas el símbolo de moneda. Si un campo no aparece en el ticket, devuélvelo como null. No añadas texto fuera del JSON."
+      },
+      {
+        "role": "assistant",
+        "content": "{\"comercio\": {\"nombre\": \"SUPERMERCADO LA PLAZA S.L.\", \"cif\": \"B12345678\", \"direccion\": \"C/ Mayor 12, 28013 Madrid\", \"telefono\": \"911234567\"}, \"ticket\": {\"numero\": \"A-004521\", \"fecha\": \"14/06/2026\", \"hora\": \"19:42\"}, \"lineas\": [{\"descripcion\": \"LECHE ENTERA 1L\", \"cantidad\": 2, \"precio_unitario\": 0.95, \"importe\": 1.9}, {\"descripcion\": \"PAN DE MOLDE\", \"cantidad\": 1, \"precio_unitario\": 1.45, \"importe\": 1.45}], \"impuestos\": [{\"tipo\": \"IVA\", \"porcentaje\": 4, \"base\": 3.22, \"cuota\": 0.13}], \"subtotal\": 3.22, \"total\": 3.35, \"forma_pago\": \"TARJETA\"}"
+      }
+    ],
+    "images": [
+      "images/ticket_0001.jpg"
+    ]
+  }
+]

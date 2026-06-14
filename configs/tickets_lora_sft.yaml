@@ -1,0 +1,54 @@
+### Configuración LoRA SFT de GLM-OCR para el dominio de tickets.
+### Se ejecuta con LLaMA-Factory:  llamafactory-cli train configs/tickets_lora_sft.yaml
+
+### modelo
+model_name_or_path: zai-org/GLM-OCR
+trust_remote_code: true
+
+### método
+stage: sft
+do_train: true
+finetuning_type: lora
+lora_rank: 8
+lora_alpha: 16
+lora_dropout: 0.05
+lora_target: all
+# El encoder de visión (CogViT) se mantiene congelado por defecto: para tickets
+# suele bastar con adaptar el decodificador. Pon a "false" si quieres afinar
+# también la parte visual (necesita más VRAM).
+freeze_vision_tower: true
+
+### dataset
+dataset: tickets_train
+eval_dataset: tickets_val
+template: glm_ocr
+cutoff_len: 8192
+max_samples: 100000
+overwrite_cache: true
+preprocessing_num_workers: 16
+dataloader_num_workers: 4
+# Limita el tamaño de imagen para acotar el uso de memoria.
+image_max_pixels: 1048576
+
+### salida
+output_dir: saves/glm-ocr/lora/tickets
+logging_steps: 10
+save_steps: 200
+plot_loss: true
+overwrite_output_dir: true
+report_to: none
+
+### entrenamiento
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 8
+learning_rate: 1.0e-4
+num_train_epochs: 3.0
+lr_scheduler_type: cosine
+warmup_ratio: 0.1
+bf16: true
+ddp_timeout: 180000000
+
+### evaluación
+per_device_eval_batch_size: 1
+eval_strategy: steps
+eval_steps: 200
