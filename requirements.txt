@@ -1,0 +1,11 @@
+# Dependencias para preparación de datos e inferencia.
+# El entrenamiento se hace con LLaMA-Factory, que se instala aparte
+# (ver README). Aquí solo van las utilidades de este repo.
+
+pillow>=10.0.0
+tqdm>=4.66.0
+
+# Inferencia con transformers (opcional, scripts/infer.py)
+torch>=2.1.0
+transformers>=4.48.0
+accelerate>=0.30.0

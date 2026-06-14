@@ -1,0 +1,22 @@
+# Datos crudos y derivados (imágenes pesadas, no se versionan)
+data/raw/
+data/*.json
+!data/dataset_info.json
+
+# Salidas de entrenamiento
+saves/
+output/
+*.safetensors
+*.bin
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Sistema / editores
+.DS_Store
+.idea/
+.vscode/
